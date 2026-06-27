@@ -1,20 +1,14 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_on",
-  "spriteId": {
-    "name": "spr_nall",
-    "path": "sprites/spr_nall/spr_nall.yy",
-  },
+  "name": "obj_collision_enemies",
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "obj_collision_enemies",
-    "path": "objects/obj_collision_enemies/obj_collision_enemies.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,

@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_on",
+  "name": "obj_spike_off",
   "spriteId": {
-    "name": "spr_nall",
-    "path": "sprites/spr_nall/spr_nall.yy",
+    "name": "spr_spike_off",
+    "path": "sprites/spr_spike_off/spr_spike_off.yy",
   },
   "solid": false,
   "visible": true,

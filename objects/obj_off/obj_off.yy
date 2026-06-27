@@ -11,7 +11,10 @@
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_collision_enemies",
+    "path": "objects/obj_collision_enemies/obj_collision_enemies.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,

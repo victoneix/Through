@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_on",
+  "name": "obj_enemy",
   "spriteId": {
-    "name": "spr_nall",
-    "path": "sprites/spr_nall/spr_nall.yy",
+    "name": "spr_enemy",
+    "path": "sprites/spr_enemy/spr_enemy.yy",
   },
   "solid": false,
   "visible": true,
@@ -12,8 +12,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "obj_collision_enemies",
-    "path": "objects/obj_collision_enemies/obj_collision_enemies.yy",
+    "name": "obj_enemies",
+    "path": "objects/obj_enemies/obj_enemies.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -27,7 +27,10 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {

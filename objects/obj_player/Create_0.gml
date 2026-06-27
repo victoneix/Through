@@ -1,7 +1,6 @@
-spd = 2;
 hspd = 0;
 vspd = 0;
-grav = 0.3;
+grav = .3;
 place = false;
 
 can_move = 0;
@@ -23,10 +22,10 @@ moving = function(){
 	var _jump		= keyboard_check_pressed(vk_space);
 	var _jump_down	= keyboard_check(vk_space);
 	var _move		= _right - _left != 0;
-	var _ground		= checar_colisao(x, y+1);
+	var _ground		= check_collision(x, y+1);
 	
 	vspd += grav;
-	vspd = clamp(vspd, -7, 7);
+	vspd = clamp(vspd, -6, 6);
 	image_index = place;
 	
 	if(_move){
@@ -56,8 +55,19 @@ moving = function(){
 		vspd = 0;
 		vspd -= jump_height;
 	}
+	
+	
+	if(!_ground && vspd > 0){
+		var _collision_enemy = instance_place(x,y+1,obj_enemies);
+		if(_collision_enemy){
+			vspd = 0;
+			vspd -= jump_height;
+			jump_count = jump_max;
+			instance_destroy(_collision_enemy.id);
+		}
+	}
 }
-checar_colisao = function(_x, _y) {
+check_collision = function(_x, _y) {
 	if (place_meeting(_x, _y, obj_collision)) return true;
 	if (!place) {	
 		if (place_meeting(_x, _y, obj_on)) return true;
@@ -83,7 +93,7 @@ teleportation = function(){
 
 collision = function(){
 	repeat(abs(hspd)){
-		if(checar_colisao(x + sign(hspd), y)){
+		if(check_collision(x + sign(hspd), y)){
 			hspd = 0;
 			break;
 		} else {
@@ -92,7 +102,7 @@ collision = function(){
 	}
 	
 	repeat(abs(vspd)){
-		if(checar_colisao(x, y + sign(vspd))){
+		if(check_collision(x, y + sign(vspd))){
 			vspd = 0;
 			break;
 		} else {
