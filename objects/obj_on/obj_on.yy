@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_wall",
+  "name": "obj_on",
   "spriteId": {
-    "name": "spr_wall",
-    "path": "sprites/spr_wall/spr_wall.yy",
+    "name": "spr_nall",
+    "path": "sprites/spr_nall/spr_nall.yy",
   },
   "solid": false,
   "visible": true,
