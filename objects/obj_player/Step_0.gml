@@ -1,5 +1,8 @@
 moving();
-if(!place_meeting(x, y, obj_mall) && !place_meeting(x,y,obj_nall)){
-	if(keyboard_check_pressed(ord("R"))) place =! place;
+teleportation();
+if(!place_meeting(x, y, obj_off) && !place_meeting(x,y,obj_on)){
+	if(keyboard_check_pressed(vk_enter)) place =! place;
 }
-image_index = place;
+
+//show_debug_message(hspd);
+//show_debug_message(vspd);
