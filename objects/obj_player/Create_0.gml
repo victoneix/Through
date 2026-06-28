@@ -6,7 +6,7 @@ place = false;
 can_move = 0;
 move_dir = 0;
 move_spd = 0;
-move_spd_max = 3;
+move_spd_max = 2;
 acc = .3;
 dcc = .3;
 
@@ -26,17 +26,21 @@ moving = function(){
 	
 	vspd += grav;
 	vspd = clamp(vspd, -6, 6);
-	image_index = place;
 	
 	if(_move){
+		if(!place) sprite_index = spr_player_walk_on;
+		else sprite_index = spr_player_walk_off;
 		move_dir = point_direction(0, 0, _right - _left, 0);
 		move_spd = approach(move_spd, move_spd_max, acc);
 	} else{
+		if(!place) sprite_index = spr_player_idle_on;
+		else sprite_index = spr_player_idle_off;
 		move_spd = approach(move_spd, 0, dcc);
 	}
 	
 	can_move = approach(can_move, 0, .4);
 	if(can_move <= 0) hspd = lengthdir_x(move_spd, move_dir);
+	if(hspd != 0) image_xscale = sign(hspd);
 	
 	if(!_jump_down && vspd < 0){
 		vspd = max(vspd, -jump_height / 2)
@@ -47,6 +51,20 @@ moving = function(){
 		jump_count = jump_max;
 	} else{
 		coyote_time--;
+		
+		if(!place){
+			if(vspd > 0){
+				sprite_index = spr_player_fail_on;
+			} else if(vspd < 0){
+				sprite_index = spr_player_jump_on;
+			}
+		} else{
+			if(vspd > 0){
+				sprite_index = spr_player_fail_off;
+			} else if(vspd < 0){
+				sprite_index = spr_player_jump_off;
+			}
+		}
 	}
 	
 	if(_jump && coyote_time > 0 || _jump && jump_count > 0){
