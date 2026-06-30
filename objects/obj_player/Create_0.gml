@@ -16,6 +16,9 @@ jump_height = 5;
 coyote_time_max = 10;
 coyote_time = 0;
 
+x_scale = 1;
+y_scale = 1;
+
 moving = function(){
 	var _right		= keyboard_check(ord("D"));
 	var _left		= keyboard_check(ord("A"));
@@ -40,7 +43,7 @@ moving = function(){
 	
 	can_move = approach(can_move, 0, .4);
 	if(can_move <= 0) hspd = lengthdir_x(move_spd, move_dir);
-	if(hspd != 0) image_xscale = sign(hspd);
+	if(hspd != 0) x_scale = sign(hspd);
 	
 	if(!_jump_down && vspd < 0){
 		vspd = max(vspd, -jump_height / 2)
