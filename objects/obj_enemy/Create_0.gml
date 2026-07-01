@@ -8,6 +8,10 @@ walk = function(){
 	
 	if(_ground){
 		hspd = move_dir * move_spd;
+		image_speed = 1;
+	} else{
+		hspd = 0;
+		image_speed = 0;
 	}
 	if(place_meeting(x+hspd, y, obj_collision_enemies)){
 		move_dir*=-1;

@@ -1,0 +1,1 @@
+draw_sprite(spr_tutorial, next_pag, x, y);

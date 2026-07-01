@@ -1,0 +1,1 @@
+text = "Thank you so much for playing. I'm glad you made it to the end. Please share this game with your friends, family, and anyone else you know. Thanks again for playing. <3";

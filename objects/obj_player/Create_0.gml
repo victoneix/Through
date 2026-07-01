@@ -2,6 +2,7 @@ hspd = 0;
 vspd = 0;
 grav = .3;
 place = false;
+death_p = false;
 
 can_move = 0;
 move_dir = 0;
@@ -19,7 +20,15 @@ coyote_time = 0;
 x_scale = 1;
 y_scale = 1;
 
+respawn_time_max = 60;
+respawn_time = respawn_time_max;
+
+len_max = audio_sound_length(snd_reloading);
+len = len_max;	
+
 moving = function(){
+	if(global.transition) exit;
+	if(death_p) exit;
 	var _right		= keyboard_check(ord("D"));
 	var _left		= keyboard_check(ord("A"));
 	var _jump		= keyboard_check_pressed(vk_space);
@@ -71,6 +80,7 @@ moving = function(){
 	}
 	
 	if(_jump && coyote_time > 0 || _jump && jump_count > 0){
+		audio_play_sound(snd_jump, 0, 0);
 		jump_count--;
 		coyote_time = 0;
 		vspd = 0;
@@ -85,9 +95,27 @@ moving = function(){
 			vspd -= jump_height;
 			jump_count = jump_max;
 			instance_destroy(_collision_enemy.id);
+			audio_play_sound(snd_death_e, 0, 0);
 		}
 	}
 }
+
+death_player = function(){
+	if(death_p){
+		sprite_index = spr_player_death;
+		hspd = 0;
+		vspd = 0;
+		respawn_time--;
+		if(respawn_time < 1){
+			x = xstart;
+			y = ystart;
+			death_p = false;
+			respawn_time = respawn_time_max;
+			room_restart();
+		}
+	} 
+}
+
 check_collision = function(_x, _y) {
 	if (place_meeting(_x, _y, obj_collision)) return true;
 	if (!place) {	

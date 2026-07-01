@@ -1,2 +1,2 @@
 vspd += grav;
-vspd = clamp(vspd, -7, 7);
+vspd = clamp(vspd, -2, 2);
